@@ -1,10 +1,16 @@
-const Item = require('../models/clothingItem');
-const { BAD_REQUEST, NOT_FOUND, INTERNAL_SERVER_ERROR } = require('../utils/errors');
+const Item = require("../models/clothingItem");
+const {
+  BAD_REQUEST,
+  NOT_FOUND,
+  INTERNAL_SERVER_ERROR,
+} = require("../utils/errors");
 
 const getItems = (req, res) => {
   Item.find({})
     .then((items) => res.send(items))
-    .catch((err) => res.status(INTERNAL_SERVER_ERROR).send({ message: err.message }));
+    .catch((err) =>
+      res.status(INTERNAL_SERVER_ERROR).send({ message: err.message })
+    );
 };
 
 const createItem = (req, res) => {
