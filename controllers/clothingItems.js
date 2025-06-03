@@ -30,29 +30,6 @@ const createItem = (req, res) => {
         .send({ message: "An error has occurred on the server" });
     });
 };
-
-// const deleteItem = (req, res) => {
-//   const { itemId } = req.params;
-//   const userId = req.user._id;
-//   Item.findByIdAndDelete(itemId)
-//     .orFail(() => {
-//       const error = new Error("Item not found");
-//       error.statusCode = NOT_FOUND;
-//       throw error;
-//     })
-//     .then(() => res.status(200).send({ message: "Item deleted successfully" }))
-//     .catch((err) => {
-//       if (err.statusCode === NOT_FOUND) {
-//         return res.status(NOT_FOUND).send({ message: err.message });
-//       }
-//       if (err.name === "CastError") {
-//         return res.status(BAD_REQUEST).send({ message: err.message });
-//       }
-//       return res
-//         .status(INTERNAL_SERVER_ERROR)
-//         .send({ message: "An error has occurred on the server" });
-//     });
-// };
 const deleteItem = (req, res) => {
   const { itemId } = req.params;
   const userId = req.user._id; // Get the logged-in user's ID from req.user
