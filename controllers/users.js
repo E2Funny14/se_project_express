@@ -11,7 +11,7 @@ const {
 
 const getUsers = (req, res) => {
   User.find({})
-    .then((users) => res.send(users))
+    .then((users) => res.status(200).send(users))
     .catch((err) => {
       console.error(err);
       res
@@ -31,7 +31,7 @@ const getCurrentUser = (req, res) => {
      .then((user) => {
       const userWithoutPassword = user.toObject();
       delete userWithoutPassword.password;
-      res.status(201).send(userWithoutPassword);
+      res.status(200).send(userWithoutPassword);
     })
     .catch((err) => {
       console.error(err);
@@ -87,7 +87,10 @@ const login = (req, res) => {
     })
     .catch((err) => {
       console.error(err);
-      res.status(200).send({ message: "Invalid email or password" });
+      if (err.message === "Invalid email or password") {
+        return res.status(UNAUTHORIZED).send({ message: err.message });
+      }
+      return res.status(INTERNAL_SERVER_ERROR).send({ message: "An error has occurred on the server" });
     });
 };
 
