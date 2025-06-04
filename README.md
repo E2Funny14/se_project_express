@@ -8,17 +8,17 @@ Project 12 is a back-end server for a weather-based clothing recommendation app.
 **Error Handling**: Handling of all errors
 **Database Integration**: Persistent data storage using MongoDB.
 **RESTful API**: Follows REST principles for API design.
+**Security**: JWT-based authentication
 
 ## Technologies and Techniques Used
 
-**Node.js**: JavaScript runtime for building the server.
-**Express.js**: Web framework for creating the API endpoints.
-**MongoDB**: NoSQL database for storing user and clothing item data.
-**Mongoose**: Object Data Modeling library for MongoDB.
-**Validator.js**: Library for validating user input.
-**ESLint**: Linting tool to ensure code quality and consistency.
-**Prettier**: Code formatter for maintaining a consistent code style.
-**Nodemon**: Development tool for automatically restarting the server on file changes.
+**Node.js** & **Express.js**: Server framework
+**MongoDB** & **Mongoose**: Database and ODM
+**JWT**: Authentication
+**bcrypt**: Password hashing
+**validator.js**: Input validation 
+**ESLint** & **Prettier**: Code quality
+**nodemon**: Development server
 
 ## Running the Project
 
