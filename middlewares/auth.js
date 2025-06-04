@@ -7,7 +7,7 @@ const auth = (req, res, next) => {
   if (!authorization || !authorization.startsWith("Bearer ")) {
     return res.status(UNAUTHORIZED).send({ message: "Authorization required" });
   }
-  const token = authorization.replace("Bearer", "");
+  const token = authorization.replace("Bearer ", "");
 
   try {
     const payload = jwt.verify(token, JWT_SECRET);
