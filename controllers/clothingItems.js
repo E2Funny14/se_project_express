@@ -3,6 +3,7 @@ const {
   BAD_REQUEST,
   NOT_FOUND,
   INTERNAL_SERVER_ERROR,
+  FORBIDDEN,
 } = require("../utils/errors");
 
 const getItems = (req, res) => {
@@ -32,7 +33,7 @@ const createItem = (req, res) => {
 };
 const deleteItem = (req, res) => {
   const { itemId } = req.params;
-  const userId = req.user._id; // Get the logged-in user's ID from req.user
+  const userId = req.user._id;
 
   Item.findById(itemId)
     .orFail(() => {
@@ -54,8 +55,8 @@ const deleteItem = (req, res) => {
       if (err.statusCode === NOT_FOUND) {
         return res.status(NOT_FOUND).send({ message: err.message });
       }
-      if (err.statusCode === 403) {
-        return res.status(403).send({ message: err.message });
+      if (err.statusCode === FORBIDDEN) {
+        return res.status(FORBIDDEN).send({ message: err.message });
       }
       if (err.name === "CastError") {
         return res.status(BAD_REQUEST).send({ message: err.message });
