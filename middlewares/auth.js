@@ -13,7 +13,7 @@ const auth = (req, res, next) => {
     const payload = jwt.verify(token, JWT_SECRET);
     req.user = payload;
     return next();
-  } catch(err) {
+  } catch (err) {
     console.error(err);
     return res.status(FORBIDDEN).send({ message: "Invalid token" });
   }

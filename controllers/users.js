@@ -29,7 +29,7 @@ const getCurrentUser = (req, res) => {
       error.statusCode = NOT_FOUND;
       throw error;
     })
-     .then((user) => {
+    .then((user) => {
       const userWithoutPassword = user.toObject();
       delete userWithoutPassword.password;
       res.status(200).send(userWithoutPassword);
@@ -80,7 +80,9 @@ const createUser = (req, res) => {
 const login = (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(BAD_REQUEST).send({ message: "Email and password are required" });
+    return res
+      .status(BAD_REQUEST)
+      .send({ message: "Email and password are required" });
   }
   User.findUserByCredentials(email, password)
     .then((user) => {
@@ -94,7 +96,9 @@ const login = (req, res) => {
       if (err.message === "Invalid email or password") {
         return res.status(UNAUTHORIZED).send({ message: err.message });
       }
-      return res.status(INTERNAL_SERVER_ERROR).send({ message: "An error has occurred on the server" });
+      return res
+        .status(INTERNAL_SERVER_ERROR)
+        .send({ message: "An error has occurred on the server" });
     });
 };
 
@@ -126,4 +130,10 @@ const updateCurrentUser = (req, res) => {
     });
 };
 
-module.exports = { getUsers, getCurrentUser, createUser, login, updateCurrentUser };
+module.exports = {
+  getUsers,
+  getCurrentUser,
+  createUser,
+  login,
+  updateCurrentUser,
+};
