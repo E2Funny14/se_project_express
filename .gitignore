@@ -2,12 +2,17 @@
 logs
 *.log
 npm-debug.log*
+request.log
+error.log
 
 # Dependency directory
 node_modules
 
 # Optional npm cache directory
 .npm
+
+# Environment variables
+.env
 
 # System files and IDE settings folders
 .DS_Store

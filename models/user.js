@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: String,
     required: true,
+    default: "https://via.placeholder.com/150",
     validate: {
       validator(value) {
         return validator.isURL(value);
