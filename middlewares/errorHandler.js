@@ -1,10 +1,8 @@
 const {
   BAD_REQUEST,
-  NOT_FOUND,
   INTERNAL_SERVER_ERROR,
   CONFLICT,
   UNAUTHORIZED,
-  FORBIDDEN,
 } = require("../utils/errors");
 
 const errorHandler = (err, req, res, next) => {
