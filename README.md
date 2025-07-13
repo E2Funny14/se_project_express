@@ -1,6 +1,11 @@
 # WTWR (What to Wear?): Back End
 Project 12 is a back-end server for a weather-based clothing recommendation app. This server provides an API for managing users and clothing items, including functionality for creating, retrieving, updating, and deleting data. It also supports user authentication and authorization.
 
+## Live Application
+
+**API URL**: https://api.wtwr.example.com.jumpingcrab.com
+**Frontend URL**: https://wtwr.example.com.jumpingcrab.com
+
 ## Features
 
 **User Management**: Create and retrieve user profiles.
@@ -9,6 +14,8 @@ Project 12 is a back-end server for a weather-based clothing recommendation app.
 **Database Integration**: Persistent data storage using MongoDB.
 **RESTful API**: Follows REST principles for API design.
 **Security**: JWT-based authentication
+**Request Logging**: Winston-based logging for requests and errors
+**Input Validation**: Joi and Celebrate validation middleware
 
 ## Technologies and Techniques Used
 
@@ -19,6 +26,9 @@ Project 12 is a back-end server for a weather-based clothing recommendation app.
 **validator.js**: Input validation 
 **ESLint** & **Prettier**: Code quality
 **nodemon**: Development server
+**Winston**: Logging
+**Celebrate** & **Joi**: Request validation
+**PM2**: Process management (production)
 
 ## Running the Project
 
