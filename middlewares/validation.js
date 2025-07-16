@@ -83,21 +83,10 @@ const validateObjectId = celebrate({
   }),
 });
 
-const validateUserId = celebrate({
-  params: Joi.object().keys({
-    userId: Joi.string().length(24).hex().required().messages({
-      "string.length": 'The "userId" field must be exactly 24 characters',
-      "string.hex": 'The "userId" field must be a valid hexadecimal value',
-      "string.empty": 'The "userId" field must be filled in',
-    }),
-  }),
-});
-
 module.exports = {
   validateItemCreation,
   validateUserRegistration,
   validateUserLogin,
   validateUserUpdate,
   validateObjectId,
-  validateUserId,
 };

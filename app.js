@@ -4,11 +4,11 @@ const cors = require("cors");
 require('dotenv').config();
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { NOT_FOUND } = require("./utils/errors");
 const usersRouter = require("./routes/users");
 const clothingItemsRouter = require("./routes/clothingItems");
 const auth = require("./middlewares/auth");
 const errorHandler = require("./middlewares/errorHandler");
+const NotFoundError = require("./errors/NotFoundError");
 const { validateUserLogin, validateUserRegistration } = require("./middlewares/validation");
 
 const app = express();
@@ -26,13 +26,12 @@ app.get('/crash-test', () => {
 app.post("/signin", validateUserLogin, require("./controllers/users").login);
 app.post("/signup", validateUserRegistration, require("./controllers/users").createUser);
 app.get("/items", require("./controllers/clothingItems").getItems);
-
 app.use(auth);
 app.use("/users", usersRouter);
 app.use("/items", clothingItemsRouter);
 
-app.use((req, res) => {
-  res.status(NOT_FOUND).send({ message: "Requested resource not found" });
+app.use((req, res, next) => {
+  next(new NotFoundError("Requested resource not found"));
 });
 
 app.use(errorLogger);
