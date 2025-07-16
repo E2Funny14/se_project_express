@@ -3,7 +3,6 @@ Project 12 is a back-end server for a weather-based clothing recommendation app.
 
 ## Live Application
 
-**API URL**: https://api.wtwr.example.com.jumpingcrab.com
 **Frontend URL**: https://wtwr.example.com.jumpingcrab.com
 
 ## Features

@@ -15,7 +15,16 @@ const app = express();
 const { PORT = 3001 } = process.env;
 app.use(requestLogger);
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: [
+    "https://wtwr.example.com.jumpingcrab.com",
+    "http://localhost:3000"
+  ],
+  credentials: true,
+  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.get('/crash-test', () => {
   setTimeout(() => {
