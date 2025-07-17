@@ -35,6 +35,7 @@ app.get('/crash-test', () => {
 app.post("/signin", validateUserLogin, require("./controllers/users").login);
 app.post("/signup", validateUserRegistration, require("./controllers/users").createUser);
 app.get("/items", require("./controllers/clothingItems").getItems);
+
 app.use(auth);
 app.use("/users", usersRouter);
 app.use("/items", clothingItemsRouter);
